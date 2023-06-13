@@ -8,7 +8,7 @@ const user = require('./user.json')
 
 const app = express()
 const port = 3000
-app.set('trust proxy', true);
+app.use(cors())
 
 let lookerSession
 
@@ -136,8 +136,6 @@ async function generateEmbedTokens(userAgent, user) {
         throw error
     }
 }
-
-app.use(cors())
 
 app.get('/generate-embed-tokens', async function (req, res) {
     try {

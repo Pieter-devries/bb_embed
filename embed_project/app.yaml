@@ -16,3 +16,7 @@ handlers:
   - url: /.*
     static_files: dist/index.html
     upload: dist/index.html
+
+network:  
+  forwarded_ports:  
+    - 8080

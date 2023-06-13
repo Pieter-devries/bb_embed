@@ -2,13 +2,6 @@ runtime: nodejs18
 service: bb-embed-server
 
 handlers:
-  # - url: /(.*\..+)$
-  #   static_files: build/\1
-  #   upload: build/(.*\..+)$
-
-  # - url: /.*
-  #   static_files: build/app.js
-  #   upload: /build/app.js
   - url: /.*
     static_dir: build
     http_headers:

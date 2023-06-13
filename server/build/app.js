@@ -68,26 +68,6 @@ var config = {
     client_secret: process.env.LOOKER_CLIENT_SECRET,
     verify_ssl: true
 };
-// const user = {
-//     "external_user_id": "DemoUser",
-//     "first_name": "Demo",
-//     "last_name": "User",
-//     "session_length": 3600,
-//     "force_logout_login": true,
-//     "permissions": [
-//         "access_data",
-//         "see_looks",
-//         "see_user_dashboards",
-//         "explore",
-//         "save_content",
-//         "embed_browse_spaces",
-//         "download_without_limit",
-//         "create_alerts"
-//     ],
-//     "models": [
-//         "orders"
-//     ]
-// }
 var embedSessions = {};
 function acquireEmbedSession(userAgent, user) {
     return __awaiter(this, void 0, void 0, function () {

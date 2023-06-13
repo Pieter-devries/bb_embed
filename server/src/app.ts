@@ -3,19 +3,21 @@ import { Looker40SDK } from '@looker/sdk'
 import { DefaultSettings } from '@looker/sdk-rtl'
 import { NodeSession } from '@looker/sdk-node'
 import cors from 'cors'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const user = require('./user.json')
-
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
+
 app.use(cors())
 
 let lookerSession
 
 const config = {
-    api_url: 'https://bbplayground.cloud.looker.com',
-    client_id: 'Q69HSmVmQ5gbTDz2zc2f',
-    client_secret: 'K9YGGSWv7rPKDVFzzpXhgps2',
+    api_url: process.env.LOOKER_EMBED_API_URL,
+    client_id: process.env.LOOKER_CLIENT_ID,
+    client_secret: process.env.LOOKER_CLIENT_SECRET,
     verify_ssl: true
 }
 

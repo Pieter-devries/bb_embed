@@ -1,0 +1,21 @@
+runtime: nodejs18
+service: bb-embed-server
+
+handlers:
+  # - url: /(.*\..+)$
+  #   static_files: build/\1
+  #   upload: build/(.*\..+)$
+
+  # - url: /.*
+  #   static_files: build/app.js
+  #   upload: /build/app.js
+  - url: /.*
+    static_dir: build
+    http_headers:
+        Access-Control-Allow-Origin: https://bb-embed-client-dot-looker-dcl-data.an.r.appspot.com
+
+env_variables:
+    LOOKER_EMBED_API_URL: 'https://bbplayground.cloud.looker.com'
+    LOOKER_CLIENT_ID: 'Q69HSmVmQ5gbTDz2zc2f'
+    LOOKER_CLIENT_SECRET: 'K9YGGSWv7rPKDVFzzpXhgps2'
+

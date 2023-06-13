@@ -1,5 +1,5 @@
 runtime: nodejs18
-service: bb-embed
+service: bb-embed-client
 instance_class: F1
 
 automatic_scaling:
@@ -16,7 +16,3 @@ handlers:
   - url: /.*
     static_files: dist/index.html
     upload: dist/index.html
-
-network:  
-  forwarded_ports:  
-    - 8080

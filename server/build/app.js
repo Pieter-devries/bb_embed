@@ -55,17 +55,39 @@ var sdk_1 = require("@looker/sdk");
 var sdk_rtl_1 = require("@looker/sdk-rtl");
 var sdk_node_1 = require("@looker/sdk-node");
 var cors_1 = __importDefault(require("cors"));
+var dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 var user = require('./user.json');
 var app = (0, express_1.default)();
-var port = 3000;
-app.set('trust proxy', true);
+var port = process.env.PORT || 3000;
+app.use((0, cors_1.default)());
 var lookerSession;
 var config = {
-    api_url: 'https://bbplayground.cloud.looker.com',
-    client_id: 'Q69HSmVmQ5gbTDz2zc2f',
-    client_secret: 'K9YGGSWv7rPKDVFzzpXhgps2',
+    api_url: process.env.LOOKER_EMBED_API_URL,
+    client_id: process.env.LOOKER_CLIENT_ID,
+    client_secret: process.env.LOOKER_CLIENT_SECRET,
     verify_ssl: true
 };
+// const user = {
+//     "external_user_id": "DemoUser",
+//     "first_name": "Demo",
+//     "last_name": "User",
+//     "session_length": 3600,
+//     "force_logout_login": true,
+//     "permissions": [
+//         "access_data",
+//         "see_looks",
+//         "see_user_dashboards",
+//         "explore",
+//         "save_content",
+//         "embed_browse_spaces",
+//         "download_without_limit",
+//         "create_alerts"
+//     ],
+//     "models": [
+//         "orders"
+//     ]
+// }
 var embedSessions = {};
 function acquireEmbedSession(userAgent, user) {
     return __awaiter(this, void 0, void 0, function () {
@@ -193,7 +215,6 @@ function generateEmbedTokens(userAgent, user) {
         });
     });
 }
-app.use((0, cors_1.default)());
 app.get('/generate-embed-tokens', function (req, res) {
     return __awaiter(this, void 0, void 0, function () {
         var tokens, err_1;

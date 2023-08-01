@@ -1,5 +1,5 @@
 runtime: nodejs18
-service: bb-embed-client
+service: embed-client
 instance_class: F1
 
 automatic_scaling:
